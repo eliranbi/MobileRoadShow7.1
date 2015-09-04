@@ -2,7 +2,7 @@
 # http://git-scm.com/docs/gitignore
 
 IonicApp/node_modules/
-IonicApp/platforms/
+platforms/
 IonicApp/plugins/
 .DS_Store
 .brackets.json
