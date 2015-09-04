@@ -6,3 +6,5 @@ platforms/
 IonicApp/plugins/
 .DS_Store
 .brackets.json
+mobilefirst/
+.wlapp

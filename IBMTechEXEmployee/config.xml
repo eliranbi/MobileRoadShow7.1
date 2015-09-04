@@ -60,7 +60,7 @@
         <preference name="loginDisplay" value="embedded" />
         <preference name="wlNativeVersion" value="2170286215" />
     </platform>
-    <preference name="mfpServerUrl" value="http://172.31.99.103:10080" />
+    <preference name="mfpServerUrl" value="http://10.0.1.22:10080" />
     <preference name="mfpServerRuntime" value="BackendRuntime" />
     <preference name="displayName" value="IBMTechEXEmployee" />
     <preference name="mfpManualInit" value="false" />
