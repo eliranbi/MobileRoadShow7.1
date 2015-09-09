@@ -9,3 +9,5 @@ IonicApp/plugins/
 mobilefirst/
 .wlapp
 IBMTechExBackEnd/mobilefirst/bin
+IBMTechExBackEnd/bin/
+IBMTechExBackEnd/server/lib/

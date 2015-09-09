@@ -39,17 +39,17 @@
             
             })                      
           .state('detail', {            
-            url: '/:empId',            
+            url: '/detail/:empId',            
             templateUrl: 'partials/details.html',                   
             controller: 'employeeDetailCtrl',
             resolve:{  
-                employee:  function($stateParams, EmployeeDetailsService){                        
-                            return {
-                                _id: $stateParams.empId,
-                                employeeDetailsService : EmployeeDetailsService
-                            };                        
-                    }
-            }})                    
+                employeeDetailList:  function($stateParams, EmployeeDetailsService){                        
+                            return EmployeeDetailsService.getEmployeeDetails($stateParams.empId);                                
+                    },
+                empId: function($stateParams){
+                    return $stateParams.empId;    
+                }
+            }})                                
     })
     
     //appliction services for employee and employee details.
@@ -117,28 +117,24 @@
     }])
     
         
-    ibmApp.controller('employeeDetailCtrl', function($scope, EmployeeService,  EmployeeDetailsService, employee , $ionicHistory) {
+    ibmApp.controller('employeeDetailCtrl', function($scope, EmployeeService,
+                                                      employeeDetailList , empId ,$ionicHistory) {
         $scope.employee = {
             "first_name" : "", 
             "last_name" : "",
             "_id" : ""
         }
         $scope.employeeDetails = {}
-        console.log(">> in - employeeDetailCtrl:" + employee);
-        $scope.employee = employee;
-        $scope.employee = EmployeeService.getEmployeeById(employee._id);
-        EmployeeDetailsService.getEmployeeDetails(employee._id).then(
-            function(rsp){
-                console.log(">> in - employeeDetailCtrl -> rsp:" + rsp);                         
-                angular.forEach(rsp.data, function(emp) {                    
-                    if(emp._id == employee._id){                        
+        console.log(">> in - employeeDetailCtrl:" + employeeDetailList);
+        //Employee service cached the list of employee
+        $scope.employee = EmployeeService.getEmployeeById(empId);        
+        var data = employeeDetailList.data;
+            angular.forEach(data, function(emp) {                    
+                    if(emp._id == $scope.employee._id){                        
                         $scope.employeeDetails = emp;
                         $scope.employeeDetails.email =  angular.lowercase($scope.employeeDetails.email);
                     }   
-                });
-                
-            }
-        );
+                });                              
     })
     
         
