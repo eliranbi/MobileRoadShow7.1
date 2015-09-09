@@ -30,7 +30,12 @@
           .state('main', {
             url: '/main',
             templateUrl: 'partials/employee.html',
-            controller: 'mainCtrl'            
+            controller: 'mainCtrl',
+            resolve:{
+                employees: function(EmployeeService){
+                    return EmployeeService.getEmployeeList();
+                }
+            }           
             })          
           .state('login', {
             url: '/', /* default url */
@@ -44,8 +49,8 @@
             controller: 'employeeDetailCtrl',
             resolve:{  
                 employeeDetailList:  function($stateParams, EmployeeDetailsService){                        
-                            return EmployeeDetailsService.getEmployeeDetails($stateParams.empId);                                
-                    },
+                            return EmployeeDetailsService.getEmployeeDetails($stateParams.empId);                          
+                },
                 empId: function($stateParams){
                     return $stateParams.empId;    
                 }
@@ -55,7 +60,7 @@
     //appliction services for employee and employee details.
     ibmApp.factory("EmployeeService", function($http){
         console.log( ">> in EmployeeService ...");  
-        var employees = [];
+        var employees = [];                                                           
         return {                        
             getEmployeeList: function(){
                 return $http.get('data/employee.json').then(function(response){
@@ -70,18 +75,14 @@
             
             getEmployeeById: function(id){
                 var _emp;
-                console.log(">> getEmployeeById :" + id);
                 angular.forEach(employees, function(emp) {
                     console.log(">> getEmployeeById :" + id + " ==  " + emp._id );
-                    if(emp._id == id){                        
-                        _emp = emp;
-                    }   
+                    if(emp._id == id){ _emp = emp;}   
                 });
-                return _emp;
-                
+                return _emp;                
             }
-        };    
-    })
+        };              
+    })                
     
     ibmApp.factory("EmployeeDetailsService", function($http){
         console.log( ">> in EmployeeDetailsService ...");        
@@ -105,15 +106,9 @@
     })
     
     
-    ibmApp.controller('mainCtrl', [ '$scope', 'EmployeeService', function($scope, EmployeeService) {
+    ibmApp.controller('mainCtrl', [ '$scope', 'employees', function($scope, employees) {
         console.log(">> in mainCtrl ... ");                
-        $scope.$on('$ionicView.beforeEnter', function(){
-            console.log(">> mainCtrl beforeEnter");            
-        });        
-        EmployeeService.getEmployeeList().then(function(rsp){
-            console.log(">> EmployeeService.getEmployeeList() -> then :" + rsp);            
-                $scope.employees = rsp;
-        });        
+        $scope.employees = employees;        
     }])
     
         
