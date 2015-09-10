@@ -110,18 +110,22 @@
     
     ibmApp.controller('appCtrl', function($scope){    
         $scope.logout = function(){
-            console.log(">> in appCtrl >> logout ... ");
+            console.log(">> in appCtrl >> logout ... ");            
             $scope.user = {
                 username: "",
                 password: ""
-            };            
+            };                        
+            WL.Analytics.send();
         }        
     })
     
     
     ibmApp.controller('mainCtrl', [ '$scope', 'employees', function($scope, employees) {
         console.log(">> in mainCtrl ... ");                
-        $scope.employees = employees;        
+        $scope.employees = employees;  
+        // Adding custom event
+        var event = {viewLoad: 'employees view'};
+        WL.Analytics.log(event, 'Employees list view - loaded');        
     }])
     
         
@@ -137,7 +141,11 @@
         //Employee service cached the list of employee
         $scope.employee = EmployeeService.getEmployeeById(empId);        
         $scope.employeeDetails = employeeDetailList;
-        $scope.employeeDetails.email =  angular.lowercase($scope.employeeDetails.email);        
+        $scope.employeeDetails.email =  angular.lowercase($scope.employeeDetails.email);   
+        
+        // Adding custom event
+        var event = {viewLoad: 'detail view'};
+        WL.Analytics.log(event, 'Detial view - loaded');
     })
     
         
@@ -164,6 +172,11 @@
         $timeout(function(){
             $scope.moveLoginBox();
         }, 200);
+                                        
+        // Adding custom event
+        var event = {viewLoad: 'login view'};
+        WL.Analytics.log(event, 'Login view - loaded');                                
+                                        
     }])
     
     
