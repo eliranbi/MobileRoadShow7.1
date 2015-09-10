@@ -61,35 +61,48 @@
     ibmApp.factory("EmployeeService", function($http){
         console.log( ">> in EmployeeService ...");  
         var employees = [];                                                           
-        return {                        
+        var resourceRequest = new WLResourceRequest(            
+            "/adapters/EmployeeServices/services/list", WLResourceRequest.GET
+        );  
+        return {            
             getEmployeeList: function(){
-                return $http.get('data/employee.json').then(function(response){
-                    employees = response.data;
+                return resourceRequest.send().then(function(response){
+                    employees = response.responseJSON.employees;
                     return employees;
-                });
-            },
-            
+                }, function(response){
+                    console.log("error:" + response);
+                    return null;
+                });                
+            },            
             getEmployee: function(index){
                 return employees[index];
             },
-            
             getEmployeeById: function(id){
                 var _emp;
                 angular.forEach(employees, function(emp) {
                     console.log(">> getEmployeeById :" + id + " ==  " + emp._id );
-                    if(emp._id == id){ _emp = emp;}   
+                    if(emp._id == id){ _emp = emp; }   
                 });
                 return _emp;                
             }
-        };              
+        };            
     })                
     
     ibmApp.factory("EmployeeDetailsService", function($http){
-        console.log( ">> in EmployeeDetailsService ...");        
+        console.log( ">> in EmployeeDetailsService ...");                        
         return {            
             getEmployeeDetails: function(empId){
-                return $http.get('data/details.json');
-            }};    
+                //using path param.
+                var resourceRequest = new WLResourceRequest(            
+                    "/adapters/EmployeeServices/services/details/" + empId, WLResourceRequest.GET
+                );      
+                return resourceRequest.send().then(function(response){                    
+                    return response.responseJSON.details;
+                }, function(response){
+                    console.log("error:" + response);
+                    return null;
+                });                
+            }};                
     })
     
     
@@ -123,13 +136,8 @@
         console.log(">> in - employeeDetailCtrl:" + employeeDetailList);
         //Employee service cached the list of employee
         $scope.employee = EmployeeService.getEmployeeById(empId);        
-        var data = employeeDetailList.data;
-            angular.forEach(data, function(emp) {                    
-                    if(emp._id == $scope.employee._id){                        
-                        $scope.employeeDetails = emp;
-                        $scope.employeeDetails.email =  angular.lowercase($scope.employeeDetails.email);
-                    }   
-                });                              
+        $scope.employeeDetails = employeeDetailList;
+        $scope.employeeDetails.email =  angular.lowercase($scope.employeeDetails.email);        
     })
     
         
