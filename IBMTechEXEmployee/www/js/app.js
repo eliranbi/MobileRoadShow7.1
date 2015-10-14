@@ -145,7 +145,7 @@
         
         // Adding custom event
         var event = {viewLoad: 'detail view'};
-        WL.Analytics.log(event, 'Detial view - loaded');
+        WL.Analytics.log(event, 'Detail view - loaded');
     })
     
         
