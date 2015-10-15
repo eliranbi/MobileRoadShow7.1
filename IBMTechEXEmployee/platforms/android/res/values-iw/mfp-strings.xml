@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="push_notification_title">hellocordova</string>
+    <string name="push_notification_title">IBMTechEXEmployee</string>
     <string name="error">שגיאה</string>
     <string name="close">סגירה</string>
     <string name="cancel">ביטול</string>

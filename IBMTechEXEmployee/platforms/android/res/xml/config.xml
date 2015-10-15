@@ -103,13 +103,9 @@
     <splash density="ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
     <splash density="mdpi" src="res/screen/android/screen-mdpi-portrait.png" />
     <splash density="xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
-    <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
-    <update src="res/screen/android/splash-ldpi.9.png" target="res/drawable-ldpi/splash.9.png" />
-    <update src="res/screen/android/splash-mdpi.9.png" target="res/drawable-mdpi/splash.9.png" />
-    <update src="res/screen/android/splash-xhdpi.9.png" target="res/drawable-xhdpi/splash.9.png" />
-    <update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" />
+    <update src="res/screen/android/splash.9.png" target="res/drawable/splash.9.png" />
     <preference name="loginDisplay" value="embedded" />
-    <preference name="wlNativeVersion" value="1839145035 " />
+    <preference name="wlNativeVersion" value="2762270245" />
     <name>IBMTechEXEmployee</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -119,8 +115,8 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <preference name="mfpServerUrl" value="http://127.0.0.1:10080" />
-    <preference name="mfpServerRuntime" value="BackendRuntime" />
-    <preference name="displayName" value="hellocordova" />
+    <preference name="mfpServerUrl" value="http://9.80.81.93:10080" />
+    <preference name="mfpServerRuntime" value="IBMTechExBackEnd" />
+    <preference name="displayName" value="IBMTechEXEmployee" />
     <preference name="mfpManualInit" value="false" />
 </widget>

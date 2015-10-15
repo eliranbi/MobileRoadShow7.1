@@ -2,7 +2,7 @@
 <project version="4">
     <component name="ChangeListManager">
         <list comment="" default="true" id="7d713374-a55d-477f-abc8-3c6639278d55" name="Default" />
-        <ignored path="hellocordova.iws" />
+        <ignored path="IBMTechEXEmployee.iws" />
         <ignored path=".idea/workspace.xml" />
         <option name="TRACKING_ENABLED" value="true" />
         <option name="SHOW_DIALOG" value="false" />
@@ -63,12 +63,12 @@
     </component>
     <component SELECTED_TARGET="default_target" name="ExecutionTargetManager" />
     <component name="FavoritesManager">
-        <favorites_list name="hellocordova" />
+        <favorites_list name="IBMTechEXEmployee" />
     </component>
     <component name="FileEditorManager">
         <leaf>
-            <file current="true" current-in-tab="true" leaf-file-name="hellocordova.iml" pinned="false">
-                <entry file="file://$PROJECT_DIR$/hellocordova.iml">
+            <file current="true" current-in-tab="true" leaf-file-name="IBMTechEXEmployee.iml" pinned="false">
+                <entry file="file://$PROJECT_DIR$/IBMTechEXEmployee.iml">
                     <provider editor-type-id="text-editor" selected="true">
                         <state column="0" line="0" max-vertical-offset="463" selection-end="0" selection-start="0" vertical-offset="0" vertical-scroll-proportion="0.0">
                             <folding />
@@ -121,17 +121,17 @@
                 <subPane>
                     <PATH>
                         <PATH_ELEMENT>
-                            <option name="myItemId" value="hellocordova" />
+                            <option name="myItemId" value="IBMTechEXEmployee" />
                             <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
                         </PATH_ELEMENT>
                     </PATH>
                     <PATH>
                         <PATH_ELEMENT>
-                            <option name="myItemId" value="hellocordova" />
+                            <option name="myItemId" value="IBMTechEXEmployee" />
                             <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
                         </PATH_ELEMENT>
                         <PATH_ELEMENT>
-                            <option name="myItemId" value="hellocordova" />
+                            <option name="myItemId" value="IBMTechEXEmployee" />
                             <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
                         </PATH_ELEMENT>
                     </PATH>
@@ -152,7 +152,7 @@
         <property name="options.splitter.details.proportions" value="0.2" />
         <property name="options.searchVisible" value="true" />
     </component>
-    <component name="RunManager" selected="Android Application.hellocordova">
+    <component name="RunManager" selected="Android Application.IBMTechEXEmployee">
         <configuration default="true" factoryName="Android Tests" type="AndroidTestRunConfigurationType">
             <module name="" />
             <option name="TESTING_TYPE" value="0" />
@@ -242,8 +242,8 @@
             <option name="CLEAR_LOGCAT" value="false" />
             <method />
         </configuration>
-        <configuration default="false" factoryName="Android Application" name="hellocordova" type="AndroidRunConfigurationType">
-            <module name="hellocordova" />
+        <configuration default="false" factoryName="Android Application" name="IBMTechEXEmployee" type="AndroidRunConfigurationType">
+            <module name="IBMTechEXEmployee" />
             <option name="ACTIVITY_CLASS" value="" />
             <option name="MODE" value="default_activity" />
             <option name="DEPLOY" value="true" />
@@ -261,7 +261,7 @@
             <method />
         </configuration>
         <list size="1">
-            <item class="java.lang.String" index="0" itemvalue="Android Application.hellocordova" />
+            <item class="java.lang.String" index="0" itemvalue="Android Application.IBMTechEXEmployee" />
         </list>
         <configuration default="true" name="&lt;template&gt;" selected="false" type="TestNG">
             <option name="MAIN_CLASS_NAME" />
@@ -376,7 +376,7 @@
         <breakpoint-manager />
     </component>
     <component name="editorHistoryManager">
-        <entry file="file://$PROJECT_DIR$/hellocordova.iml">
+        <entry file="file://$PROJECT_DIR$/IBMTechEXEmployee.iml">
             <provider editor-type-id="text-editor" selected="true">
                 <state column="0" line="0" max-vertical-offset="463" selection-end="0" selection-start="0" vertical-offset="0" vertical-scroll-proportion="0.0">
                     <folding />

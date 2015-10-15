@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="push_notification_title">hellocordova</string>
+    <string name="push_notification_title">IBMTechEXEmployee</string>
     <string name="error">Error</string>
     <string name="close">Cerrar</string>
     <string name="cancel">Cancelar</string>
