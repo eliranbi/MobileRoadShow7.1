@@ -1,5 +1,6 @@
 /cordova.js
 /cordova_plugins.js
+<<<<<<< HEAD
 /css/fonts/Karla-Bold.ttf
 /css/fonts/Karla-Regular.ttf
 /css/fonts/LubalinforIBM-Book.otf
@@ -118,6 +119,15 @@
 /pages/login.html
 /partials/details.html
 /partials/employee.html
+=======
+/css/index.css
+/filelist
+/img/bg-landscape.png
+/img/bg-portrait.png
+/img/thumbnail.png
+/index.html
+/js/index.js
+>>>>>>> refs/heads/step-4-updates
 /plugins/cordova-plugin-mfp/bootstrap.js
 /plugins/org.apache.cordova.device/www/device.js
 /plugins/org.apache.cordova.dialogs/www/android/notification.js

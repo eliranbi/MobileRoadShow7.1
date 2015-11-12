@@ -115,8 +115,13 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+<<<<<<< HEAD
     <preference name="mfpServerUrl" value="http://9.80.81.93:10080" />
     <preference name="mfpServerRuntime" value="IBMTechExBackEnd" />
+=======
+    <preference name="mfpServerUrl" value="http://172.31.99.103:10080" />
+    <preference name="mfpServerRuntime" value="BackendRuntime" />
+>>>>>>> refs/heads/step-4-updates
     <preference name="displayName" value="IBMTechEXEmployee" />
     <preference name="mfpManualInit" value="false" />
 </widget>

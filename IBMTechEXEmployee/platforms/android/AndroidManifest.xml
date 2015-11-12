@@ -10,7 +10,11 @@
             </intent-filter>
         </activity>
     </application>
+<<<<<<< HEAD
     <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="22" />
+=======
+    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="19" />
+>>>>>>> refs/heads/step-4-updates
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
