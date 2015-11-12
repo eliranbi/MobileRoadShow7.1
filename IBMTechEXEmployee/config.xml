@@ -28,7 +28,7 @@
         <splash density="xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
         <update src="res/screen/android/splash.9.png" target="res/drawable/splash.9.png" />
         <preference name="loginDisplay" value="embedded" />
-        <preference name="wlNativeVersion" value="2762270245" />
+        <preference name="wlNativeVersion" value="3641188782" />
     </platform>
     <platform name="ios">
         <icon height="57" src="res/icon/ios/icon.png" width="57" />
@@ -60,7 +60,7 @@
         <preference name="loginDisplay" value="embedded" />
         <preference name="wlNativeVersion" value="2170286215" />
     </platform>
-    <preference name="mfpServerUrl" value="http://9.80.81.93:10080" />
+    <preference name="mfpServerUrl" value="http://172.16.136.131:10080" />
     <preference name="mfpServerRuntime" value="IBMTechExBackEnd" />
     <preference name="displayName" value="IBMTechEXEmployee" />
     <preference name="mfpManualInit" value="false" />
