@@ -1,0 +1,21 @@
+{
+  "ids": {
+    "User": 1,
+    "AccessToken": 1,
+    "ACL": 1,
+    "RoleMapping": 1,
+    "Role": 1,
+    "employee": 1003
+  },
+  "models": {
+    "User": {},
+    "AccessToken": {},
+    "ACL": {},
+    "RoleMapping": {},
+    "Role": {},
+    "employee": {
+      "1000": "{\"_id\":1000,\"first_name\":\"Eliran\",\"last_name\":\"Ben Ishay\",\"img\":\"\",\"job_title\":\"Solution Architect\"}",
+      "1001": "{\"_id\":1001,\"first_name\":\"Dennis\",\"last_name\":\"Schultz\",\"img\":\"\",\"job_title\":\"Solution Architect\"}"
+    }
+  }
+}
