@@ -60,19 +60,7 @@ function loadMFP(){
         }
         
 		//console.log("bootstrap.js dispatching mfpready event");
-        try {
-            var wlevent = new Event('mfpready');
-        }
-        catch (e) {
-            if (e instanceof TypeError) {
-            	// Trying to use old events
-                wlevent = document.createEvent('Event');
-                wlevent.initEvent('mfpready', true, true);
-            }
-            else {
-            	console.error(e.message);
-            }
-        }
+		var wlevent = new Event('mfpready');
 		// Dispatch the event.
 		document.dispatchEvent(wlevent);
 		mfpreadyfired = true;

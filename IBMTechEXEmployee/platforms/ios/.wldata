@@ -1,6 +1,2 @@
 ## DO NOT CHANGE THE CONTENTS OF THIS FILE !!! ##
-<<<<<<< HEAD
-platformSourcesVersion=${latestPlatformSourcesVersion}
-=======
 platformSourcesVersion=7.1.0.0
->>>>>>> refs/heads/step-4-updates

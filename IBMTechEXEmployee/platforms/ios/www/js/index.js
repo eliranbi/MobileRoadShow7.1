@@ -12,7 +12,7 @@ var wlInitOptions = {
 // Called automatically after MFP framework initialization by WL.Client.init(wlInitOptions).
 function wlCommonInit(){
 	// Common initialization code goes here
-    document.getElementById('app_version').textContent = WL.Client.getAppProperty("APP_VERSION");
+    document.getElementById('app_version').innerText = WL.Client.getAppProperty("APP_VERSION");
     document.getElementById('mobilefirst').setAttribute('style', 'display:block;');
 }
 

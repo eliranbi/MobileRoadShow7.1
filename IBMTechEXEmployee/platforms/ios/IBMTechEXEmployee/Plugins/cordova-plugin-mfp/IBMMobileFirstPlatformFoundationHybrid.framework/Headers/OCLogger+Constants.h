@@ -46,11 +46,6 @@ extern int const HTTP_SC_OK;
 extern int const HTTP_SC_NO_CONTENT;
 extern int const HTTP_SC_BAD_REQUEST;
 
-<<<<<<< HEAD
-extern NSString* const DEFAULT_LOCALE_ID;
-extern NSString* const DEFAULT_TIME_ZONE;
-=======
->>>>>>> refs/heads/step-4-updates
 extern NSString* const DEFAULT_TIME_FORMAT;
 
 extern NSString* const LOG_UPLOADER_PATH;

@@ -3310,9 +3310,10 @@ WL.Response = WLJSX.Class.create({
   initialize: function(transport, invocationContext) {
 
     /*jshint strict:false*/
-	this.responseHeaders = {};
+
     if (transport !== null && typeof transport.status !== 'undefined') {
       this.status = (transport.status || 200);
+      this.responseHeaders = {};
 
       try {
         this.responseText = WLJSX.String.interpret(transport.responseText);
@@ -8952,21 +8953,19 @@ this.pinTrustedCertificatePublicKey = function(certificateFilename){
 		options = extendWithDefaultOptions(options);
 
 		var blocked = false;
-		
+
 		function onInvokeProcedureSuccess(transport) {
 			if (!blocked) {
 				blocked = true;
-				if (!transport.responseJSON || (transport.responseJSON && !transport.responseJSON.isSuccessful)) {
+				if (!transport.responseJSON.isSuccessful) {
 					var failResponse = new WL.Response(transport, options.invocationContext);
 					failResponse.errorCode = WL.ErrorCode.PROCEDURE_ERROR;
 					failResponse.errorMsg = WL.ClientMessages.serverError;
 					failResponse.invocationResult = transport.responseJSON;
-					if (!failResponse.invocationResult) {
-					}
-					else if (failResponse.invocationResult.errors) {
+					if (failResponse.invocationResult.errors) {
 						failResponse.errorMsg += " " + failResponse.invocationResult.errors;
+						WL.Logger.error(failResponse.errorMsg);
 					}
-					WL.Logger.error(failResponse.errorMsg);
 					options.onFailure(failResponse);
 				} else {
 					var response = new WL.Response(transport, options.invocationContext);
@@ -11656,7 +11655,7 @@ function WLResourceRequest(_url, _method, _timeout) {
 
   /**
    * Sends the request to a server.
-   * @param {json} Body content as JSON object or string as a form data. If content type is not set by 'Content-Type' header, it will be set to 'application/x-www-form-urlencoded'.
+   * @param {json} Body content as JSON object or string as a form data. The content type will be set to 'application/x-www-form-urlencoded'.
    * @returns Returns promise. Sample usage: <br>
    * var request = WLResourceRequest(url, method, timeout);<br>
    * request.send(json).then(<br>
@@ -11666,13 +11665,11 @@ function WLResourceRequest(_url, _method, _timeout) {
    */
   this.sendFormParameters = function(json) {
     var contentString = encodeFormParameters(json);
-    if (this.getHeader('Content-Type') === null) {
-      this.addHeader('Content-Type', 'application/x-www-form-urlencoded');
-    }
+    this.addHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     return sendRequestAsync(contentString, 0);
   };
-  
+
   function encodeFormParameters(json) {
     if (json === null || typeof(json) === 'undefined') {
       return '';
@@ -11934,6 +11931,7 @@ function WLResourceRequest(_url, _method, _timeout) {
     }
     return true;
   }
+
 }
 
 WLResourceRequest.GET = 'GET';
