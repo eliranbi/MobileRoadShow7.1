@@ -31,7 +31,12 @@ ibmApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('main', {
             url: '/main',
             templateUrl: 'partials/employee.html',
-            controller: 'mainCtrl'
+            controller: 'mainCtrl',
+            resolve: {
+                employees: function (EmployeeService) {
+                    return EmployeeService.getEmployeeList();
+                }
+            }
         })
         .state('login', {
             url: '/',
@@ -109,17 +114,10 @@ ibmApp.controller('appCtrl', function ($scope) {
 })
 
 
-ibmApp.controller('mainCtrl', ['$scope', 'EmployeeService', function ($scope, EmployeeService) {
+ibmApp.controller('mainCtrl', ['$scope', 'employees', function ($scope, employees) {
     console.log(">> in mainCtrl ... ");
-    $scope.$on('$ionicView.beforeEnter', function () {
-        console.log(">> mainCtrl beforeEnter");
-    });
-    EmployeeService.getEmployeeList().then(function (rsp) {
-        console.log(">> EmployeeService.getEmployeeList() -> then :" + rsp);
-        $scope.employees = rsp;
-    });
+    $scope.employees = employees;
     }])
-
 
 ibmApp.controller('employeeDetailCtrl', function ($scope, EmployeeService,
     employeeDetailList, empId, $ionicHistory) {
