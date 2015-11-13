@@ -65,12 +65,12 @@ ibmApp.factory("EmployeeService", function ($http) {
     console.log(">> in EmployeeService ...");
     var employees = [];
     var resourceRequest = new WLResourceRequest(
-        "/adapters/EmployeeServices/services/list", WLResourceRequest.GET
+        "http://127.0.0.1:3000/api/employees", WLResourceRequest.GET
     );
     return {
         getEmployeeList: function () {
             return resourceRequest.send().then(function (response) {
-                employees = response.responseJSON.employees;
+                employees = response.responseJSON;
                 return employees;
             }, function (response) {
                 console.log("error:" + response);
@@ -99,10 +99,10 @@ ibmApp.factory("EmployeeDetailsService", function ($http) {
         getEmployeeDetails: function (empId) {
             //using path param.
             var resourceRequest = new WLResourceRequest(
-                "/adapters/EmployeeServices/services/details/" + empId, WLResourceRequest.GET
+                "http://127.0.0.1:3000/api/employees/" + empId, WLResourceRequest.GET
             );
             return resourceRequest.send().then(function (response) {
-                return response.responseJSON.details;
+                return response.responseJSON;
             }, function (response) {
                 console.log("error:" + response);
                 return null;

@@ -31,7 +31,12 @@ ibmApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('main', {
             url: '/main',
             templateUrl: 'partials/employee.html',
-            controller: 'mainCtrl'
+            controller: 'mainCtrl',
+            resolve: {
+                employees: function (EmployeeService) {
+                    return EmployeeService.getEmployeeList();
+                }
+            }
         })
         .state('login', {
             url: '/',
@@ -60,12 +65,12 @@ ibmApp.factory("EmployeeService", function ($http) {
     console.log(">> in EmployeeService ...");
     var employees = [];
     var resourceRequest = new WLResourceRequest(
-        "/adapters/EmployeeServices/services/list", WLResourceRequest.GET
+        "http://127.0.0.1:3000/api/employees", WLResourceRequest.GET
     );
     return {
         getEmployeeList: function () {
             return resourceRequest.send().then(function (response) {
-                employees = response.responseJSON.employees;
+                employees = response.responseJSON;
                 return employees;
             }, function (response) {
                 console.log("error:" + response);
@@ -94,10 +99,10 @@ ibmApp.factory("EmployeeDetailsService", function ($http) {
         getEmployeeDetails: function (empId) {
             //using path param.
             var resourceRequest = new WLResourceRequest(
-                "/adapters/EmployeeServices/services/details/" + empId, WLResourceRequest.GET
+                "http://127.0.0.1:3000/api/employees/" + empId, WLResourceRequest.GET
             );
             return resourceRequest.send().then(function (response) {
-                return response.responseJSON.details;
+                return response.responseJSON;
             }, function (response) {
                 console.log("error:" + response);
                 return null;
@@ -115,21 +120,20 @@ ibmApp.controller('appCtrl', function ($scope) {
             username: "",
             password: ""
         };
+        WL.Analytics.send();
     }
 })
 
 
-ibmApp.controller('mainCtrl', ['$scope', 'EmployeeService', function ($scope, EmployeeService) {
+ibmApp.controller('mainCtrl', ['$scope', 'employees', function ($scope, employees) {
     console.log(">> in mainCtrl ... ");
-    $scope.$on('$ionicView.beforeEnter', function () {
-        console.log(">> mainCtrl beforeEnter");
-    });
-    EmployeeService.getEmployeeList().then(function (rsp) {
-        console.log(">> EmployeeService.getEmployeeList() -> then :" + rsp);
-        $scope.employees = rsp;
-    });
-    }])
+    $scope.employees = employees;
 
+    // Adding custom event
+    var event = {viewLoad: 'employees view'};
+    WL.Analytics.log(event, 'Employee list view - loaded');
+
+    }])
 
 ibmApp.controller('employeeDetailCtrl', function ($scope, EmployeeService,
     employeeDetailList, empId, $ionicHistory) {
@@ -144,6 +148,10 @@ ibmApp.controller('employeeDetailCtrl', function ($scope, EmployeeService,
     $scope.employee = EmployeeService.getEmployeeById(empId);
     $scope.employeeDetails = employeeDetailList;
     $scope.employeeDetails.email = angular.lowercase($scope.employeeDetails.email);
+
+    // Adding custom event
+    var event = {viewLoad: 'detail view'};
+    WL.Analytics.log(event, 'Detail view - loaded');
 
 })
 
@@ -170,6 +178,10 @@ ibmApp.controller('loginCtrl', ['$scope', '$state', '$timeout',
         $timeout(function () {
             $scope.moveLoginBox();
         }, 200);
+
+        // Adding custom event
+        var event = {viewLoad: 'login view'};
+        WL.Analytics.log(event, 'Login view - loaded');
     }])
 
 //Adding MobileFirst
