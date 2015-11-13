@@ -31,7 +31,12 @@ ibmApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('main', {
             url: '/main',
             templateUrl: 'partials/employee.html',
-            controller: 'mainCtrl'
+            controller: 'mainCtrl',
+            resolve: {
+                employees: function (EmployeeService) {
+                    return EmployeeService.getEmployeeList();
+                }
+            }
         })
         .state('login', {
             url: '/',
@@ -115,19 +120,19 @@ ibmApp.controller('appCtrl', function ($scope) {
             username: "",
             password: ""
         };
+        WL.Analytics.send();
     }
 })
 
 
-ibmApp.controller('mainCtrl', ['$scope', 'EmployeeService', function ($scope, EmployeeService) {
+ibmApp.controller('mainCtrl', ['$scope', 'employees', function ($scope, employees) {
     console.log(">> in mainCtrl ... ");
-    $scope.$on('$ionicView.beforeEnter', function () {
-        console.log(">> mainCtrl beforeEnter");
-    });
-    EmployeeService.getEmployeeList().then(function (rsp) {
-        console.log(">> EmployeeService.getEmployeeList() -> then :" + rsp);
-        $scope.employees = rsp;
-    });
+    $scope.employees = employees;
+
+    // Adding custom event
+    var event = {viewLoad: 'employees view'};
+    WL.Analytics.log(event, 'Employee list view - loaded');
+
     }])
 
 
@@ -144,6 +149,10 @@ ibmApp.controller('employeeDetailCtrl', function ($scope, EmployeeService,
     $scope.employee = EmployeeService.getEmployeeById(empId);
     $scope.employeeDetails = employeeDetailList;
     $scope.employeeDetails.email = angular.lowercase($scope.employeeDetails.email);
+
+    // Adding custom event
+    var event = {viewLoad: 'detail view'};
+    WL.Analytics.log(event, 'Detail view - loaded');
 
 })
 
@@ -170,6 +179,10 @@ ibmApp.controller('loginCtrl', ['$scope', '$state', '$timeout',
         $timeout(function () {
             $scope.moveLoginBox();
         }, 200);
+
+        // Adding custom event
+        var event = {viewLoad: 'login view'};
+        WL.Analytics.log(event, 'Login view - loaded');
     }])
 
 //Adding MobileFirst
