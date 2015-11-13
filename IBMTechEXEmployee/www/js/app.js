@@ -129,7 +129,6 @@ ibmApp.controller('mainCtrl', ['$scope', 'employees', function ($scope, employee
     $scope.employees = employees;
     }])
 
-
 ibmApp.controller('employeeDetailCtrl', function ($scope, EmployeeService,
     employeeDetailList, empId, $ionicHistory) {
     $scope.employee = {
